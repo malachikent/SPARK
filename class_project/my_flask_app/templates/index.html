@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SPARK</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #add8e6; /* Light blue background */
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+        }
+        .content-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f5f5f5; /* Off-white background */
+            border: 2px solid black;
+            padding: 20px;
+            max-width: 600px;
+        }
+        .dropbox {
+            margin-top: 20px;
+            border: 2px dashed #000;
+            padding: 20px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: yellow;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s, transform 1s;
+        }
+        .message {
+            margin-top: 20px;
+            color: green;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="uploadForm">
+        <div class="content-box">
+            <h1>Submit Your Lab Report</h1>
+            <div id="dropbox" class="dropbox">Drag and drop your report here or click to select file</div>
+            <input type="file" id="fileInput" name="file" hidden>
+            <button type="submit">Upload File</button>
+            <div id="message" class="message"></div>
+        </div>
+    </form>
+
+    <script>
+        const dropbox = document.getElementById('dropbox');
+        const fileInput = document.getElementById('fileInput');
+
+        dropbox.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+        dropbox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropbox.classList.add('hover');
+        });
+
+        dropbox.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropbox.classList.remove('hover');
+        });
+
+        dropbox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropbox.classList.remove('hover');
+            const file = e.dataTransfer.files[0];
+            handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (file.type === "application/pdf") {
+                document.getElementById('message').textContent = 'Analyzing file...';
+            } else {
+                document.getElementById('message').textContent = 'Please upload a PDF file.';
+            }
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const file = formData.get('file');
+
+            if (file && file.type === "application/pdf") {
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.redirect) {
+                        window.location.href = data.redirect;
+                    } else {
+                        document.getElementById('message').textContent = data.message || 'Error processing file';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('message').textContent = 'An error occurred while uploading the file.';
+                });
+            } else {
+                document.getElementById('message').textContent = 'Please upload a PDF file.';
+            }
+        });
+
+        function createSpark(e) {
+            const spark = document.createElement('div');
+            spark.classList.add('spark');
+            document.body.appendChild(spark);
+
+            // Position the spark at the cursor location
+            spark.style.left = `${e.clientX}px`;
+            spark.style.top = `${e.clientY}px`;
+
+            // Animate the spark
+            setTimeout(() => {
+                spark.style.opacity = 1;
+                spark.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+            }, 0);
+
+            // Remove the spark after animation
+            setTimeout(() => {
+                spark.remove();
+            }, 1000);
+        }
+
+        document.addEventListener('mousemove', createSpark);
+    </script>
+</body>
+</html>
+
+

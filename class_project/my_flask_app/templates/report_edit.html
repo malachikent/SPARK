@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Report</title>
+    <!-- Add any required CSS or JS -->
+</head>
+<body>
+    <h1>Edit Your Report</h1>
+    <form method="post" action="/save_edited_report"> <!-- Adjust action as needed -->
+        {% for section, content in sections.items() %}
+        <div>
+            <h2>{{ section }}</h2>
+            <textarea name="{{ section }}" rows="10" cols="50">{{ content }}</textarea>
+        </div>
+        {% endfor %}
+        <input type="submit" value="Save Report">
+    </form>
+</body>
+</html>
+
+

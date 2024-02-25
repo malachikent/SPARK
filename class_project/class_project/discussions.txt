@@ -1,0 +1,13 @@
+1. In this experiment, 0.246 g of camphor was produced from borneol through reflux
+distillation. The percent yield calculated suggests that a large amount of product was lost during
+reflux. Further analysis could be taken to determine the composition of the product and why
+material was lost. Possible sources of error include pipetting the wrong layer, not refluxing long
+enough, and overheating the mixture during reflux. Of the sources of error mentioned, the one to
+have most likely occurred would be pipetting the wrong layer. Pipetting the right layer is
+determined by density. The product with the larger density sits on the bottom, so the product’s
+density should be known in order to extract the correct layer. One way to resolve this error is to
+write down the densities of the reactant and product before starting the experiment.
+
+
+
+

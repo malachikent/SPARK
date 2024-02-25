@@ -1,0 +1,65 @@
+
+Lab Report Notes
+
+Font_1: Times New Roman 12 (Default unless specificed otherwise)
+Font_2: Times New Roman 12 in Bold
+Spacing: Double Spaced
+Student Entry: A text box where students can type
+Content: What exactly should be filled in the box
+Assessment: A description of what is expected of the student to write and what the large language model should verify.
+Sliders: A classifyer of the critique that the grader can highlight pieces of the text. This can be between 0-1 where 0.5 is neutral, 1 is great, and 0 is unsatisfactory.
+
+Functionalities of Site:
+    1. Identify chemicals written in text and display chemical information (Molecular Formula, Density, Boiling Point, Melting Point, Hazards) about all compounds written
+    2. The content can be grayscale lettering whereby the student writes overtop of it.
+    3. Upon opening the site the student is met with a request to drag and drop a pdf of their report. The site should reject the users use unless a significant portion of the lab report is already written. This is to encourage the student first attempt to write the report on their own.
+    4. The large language model should propose a question to the student that will encourge them to rewrite aspects of their entries. In some sense the model should adobt the role of grand inquisitor, whereby the questions posed to students reveal gaps in their knowledge.
+    5. There should be a likeness assessment between reports to account for plagerism.
+    6. The site can also provide fun facts about the experiment or materials used in the experiment. The more profound the better.
+
+Title Page:
+    1. Header
+        Location: Top right of page, Content: "Lastname, Page Number"
+    2. Lab Report Title
+        Location: Center of page two spaces down, Content: "Experiment #, Day #, Name of lab"
+        Location: One space below Lab Report Title, Content: "Lastname, First Name"
+    4. Partner
+        Location: One space below Student Name, Content: ""Lastname, First Name", "Lastname, First Name" ..."
+    5. Date of Preformed Experiment
+        Location: One space below Partner, Content: "#-#-#", If experiment was not preformed enter "NA"
+    6. Section
+        Location: One space below Date of Preformed Experiment, Content: "CHEM ####-###"
+
+Introduction:
+    1. Title:
+        Location: Far left of page on the first line below Header, Font: Font_2, Content: "Introduction"
+    2. Student Entry:
+        Location: One space below Title and tabbed to the right once, Assessment: A consise description of the chemical transformations that are taking place and the expected outcomes of the experiment.
+    3. Sliders:
+        Verbosity and Correctness
+        
+Materials and Methods:
+    1. Title
+        Location: Far left of page on the first line below Student Entry for Introduction, Font: Font_2, Content: "Materials and Methods"
+    2. Student Entry
+        Location: One space below Title and tabbed to the right once, Assessment: An accurate retelling of the events that took place during the experiment in third-person past-passive tense.
+    3. Sliders:
+        Verbosity, Correctness, Flow, and Clarity
+
+Results/Calculations:
+    1. Title
+        Location: Far left of page on the first line below Student Entry for Materials and Methods, Font: Font_2, Content: "Results/Calculations"
+    2. Grader Entry
+        Location: One space below Title. Content: The grader should construct a series of tables/formulas/graphs depending on the experiment
+    3. Student Entry
+        Location: Within the graders constructed series of tables/formulas/graphs, Assessment: Correct values for calculations
+    4. Sliders:
+        Correctness
+        
+Discussion:
+    1. Title
+        Location: Far left of page on the first line below Student Entry for Results/Calculations, Font: Font_2, Content: "Discussion"
+    2. Student Entry:
+        Location: One space below Title and tabbed to the right once, Assessment: A conscise and resonable explantion of a key event that led to the outcome of the experiment, sources of error that may have led to or effect that outcome, and ways to improve upon the experiment to get to a better outcome.
+    3. Sliders:
+        Correctness, Verbosity, Flow, Clarity, 
